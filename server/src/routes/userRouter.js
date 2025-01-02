@@ -16,4 +16,10 @@ userRouter
   .route('/:userId/image')
   .patch(verifyAccessToken, upload.single('img'), userController.updateUserPhoto);
 
+userRouter.route('/:userId/subscribe').post(verifyAccessToken, userController.subscribe);
+
+userRouter
+  .route('/:userId/unsubscribe')
+  .delete(verifyAccessToken, userController.unsubscribe);
+
 module.exports = userRouter;

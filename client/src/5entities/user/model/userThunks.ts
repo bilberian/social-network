@@ -8,6 +8,10 @@ export const getAllUsersThunk = createAsyncThunk('users/getAllUsersThunk', () =>
   userService.getUsers(),
 );
 
+export const fetchUsersThunk = createAsyncThunk('users/fetchUsersThunk', (filter: string) =>
+  userService.searchUsers(filter),
+);
+
 export const getUserByIdThunk = createAsyncThunk('users/getUserByIdThunk', async (userId: number) =>
   userService.getUserById(userId),
 );
@@ -39,15 +43,26 @@ export const uploadPhotoThunk = createAsyncThunk(
     userService.uploadPhoto(id, formData),
 );
 
-
 export const deleteUserThunk = createAsyncThunk(
   'users/deleteUserThunk',
   async (id: UserType['id']) => {
     await userService.deleteUser(id);
+    // return id;
+  },
+);
+
+export const subscribeToUserThunk = createAsyncThunk(
+  'users/subscribeToUserThunk',
+  async (id: UserType['id']) => {
+    await userService.subscribeToUser(id);
     return id;
   },
 );
 
-export const fetchUsersThunk = createAsyncThunk('users/fetchUsersThunk', (filter: string) =>
-  userService.searchUsers(filter),
-);
+
+export const unsubscribeFromUserThunk = createAsyncThunk(
+  'users/unsubscribeFromUserThunk',
+  async (id: UserType['id']) => {
+    await userService.unsubscribeFromUser(id);
+    return id;
+  });

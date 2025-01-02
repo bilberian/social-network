@@ -1,4 +1,4 @@
-const { User } = require('../../db/models');
+const { User, Subscription } = require('../../db/models');
 const removeImage = require('../utils/removeImage');
 
 class UserController {
@@ -83,6 +83,52 @@ class UserController {
     } catch (error) {
       console.log(error);
       res.status(500).json({ text: 'Ошибка удаления аккаунта', message: error.message });
+    }
+  };
+
+  subscribe = async (req, res) => {
+    try {
+      const subscriberId = res.locals.user.id;
+      const subscribedToId = req.params.userId;
+
+      const user = await User.findByPk(subscribedToId);
+      if (!user) {
+        return res.status(404).json({ text: 'Пользователь не найден' });
+      }
+
+      await Subscription.create({ subscriberId, subscribedToId });
+      res.status(201).json({ text: 'Подписка успешно создана' });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ text: 'Ошибка подписки', message: error.message });
+    }
+  };
+
+  unsubscribe = async (req, res) => {
+    try {
+      const subscriberId = res.locals.user.id;
+      const subscribedToId = req.params.userId;
+
+      const user = await User.findByPk(subscribedToId);
+      if (!user) {
+        return res.status(404).json({ text: 'Пользователь не найден' });
+      }
+
+      const result = await Subscription.destroy({
+        where: {
+          subscriberId,
+          subscribedToId,
+        },
+      });
+
+      if (result === 0) {
+        return res.status(404).json({ text: 'Подписка не найдена' });
+      }
+
+      res.status(204).json({ text: 'Вы отписались от пользователя' });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ text: 'Ошибка отписки', message: error.message });
     }
   };
 }

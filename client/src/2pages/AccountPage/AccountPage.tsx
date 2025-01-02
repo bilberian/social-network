@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import AccountEditForm from '../../3widgets/EditForms/AccountEditForm';
 import { AuthStatus } from '../../4features/auth/model/types';
+import { logoutThunk } from '../../4features/auth/model/authThunks';
 import {
   deleteUserThunk,
   getUserByIdThunk,
@@ -9,7 +10,6 @@ import {
 } from '../../5entities/user/model/userThunks';
 import { useAppDispatch, useAppSelector } from '../../6shared/lib/hooks';
 import './AccountPage.css';
-import { logoutThunk } from '../../4features/auth/model/authThunks';
 
 export default function AccountPage(): React.JSX.Element {
   const dispatch = useAppDispatch();

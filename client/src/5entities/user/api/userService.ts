@@ -91,13 +91,35 @@ class UserService {
   async searchUsers(filter: string): Promise<UserType[]> {
     try {
       const response = await this.client.get(`/search/?filter=${filter}`);
-      if (response.status!== 200) throw new Error('Неверный статус, ожидалось 200');
+      if (response.status !== 200) throw new Error('Неверный статус, ожидалось 200');
       const data = userSchema.array().parse(response.data);
       return data;
     } catch (error) {
       if (error instanceof ZodError) {
         console.log('Zod error:', error.issues);
       } else if (error instanceof AxiosError) {
+        console.log('Axios error:', error.response?.data);
+      }
+      throw error;
+    }
+  }
+
+  async subscribeToUser(userId: number): Promise<void> {
+    try {
+      await this.client.post(`/users/${String(userId)}/subscribe`);
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        console.log('Axios error:', error.response?.data);
+      }
+      throw error;
+    }
+  }
+
+  async unsubscribeFromUser(userId: number): Promise<void> {
+    try {
+      await this.client.delete(`/users/${String(userId)}/unsubscribe`);
+    } catch (error) {
+      if (error instanceof AxiosError) {
         console.log('Axios error:', error.response?.data);
       }
       throw error;

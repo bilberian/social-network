@@ -37,7 +37,11 @@ export default function Sidebar(): React.JSX.Element {
             </RouterLink>
             <RouterLink to="/game" className="side-link">
               <i className="fi fi-tr-people-poll"></i>
-              Подписки
+              Мои подписки
+            </RouterLink>
+            <RouterLink to="/game" className="side-link">
+              <i className="fi fi-tr-subscription"></i>
+              Подписчики
             </RouterLink>
             <RouterLink to="/game" className="side-link">
               <i className="fi fi-tr-camera"></i>

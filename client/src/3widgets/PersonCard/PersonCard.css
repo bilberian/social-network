@@ -27,7 +27,7 @@
   align-self: center;
 }
 
-.person-card__button {
+.person-card__button-subscribe, .person-card__button-unsubscribe {
   padding: 10px 20px;
   background-color: #854847;
   color: #e9e3e3;
@@ -40,7 +40,11 @@
   transition: background-color 0.3s ease-in-out;
 }
 
-.person-card__button:hover {
+.person-card__button-unsubscribe {
+  background-color: #8b8484;
+}
+
+.person-card__button-subscribe:hover, .person-card__button-unsubscribe:hover {
   background-color: #6e6c6c;
 }
 

@@ -1,0 +1,46 @@
+.person-card {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+
+  border: 2px solid #854847;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.person-card__photo {
+  width: 80px;
+  min-height: 80px;
+  border-radius: 50%;
+}
+
+.person-card__info {
+  max-width: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+
+.person-card__text {
+  font-size: 1rem;
+  align-self: center;
+}
+
+.person-card__button {
+  padding: 10px 20px;
+  background-color: #854847;
+  color: #e9e3e3;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 120px;
+  font-family: 'Mulish', serif;
+  font-weight: bold;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.person-card__button:hover {
+  background-color: #6e6c6c;
+}
+

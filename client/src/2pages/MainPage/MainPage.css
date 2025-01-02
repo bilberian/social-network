@@ -1,0 +1,28 @@
+.main-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  text-align: center;
+  color: #854847;
+  margin-bottom: 30px;
+
+}
+
+.main-page__heading {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.main-page__text {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+.main-page__list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 30px;
+  
+}

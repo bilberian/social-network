@@ -1,0 +1,33 @@
+.sidebar {
+  width: 200px;
+  background-color: #854847;
+  padding: 10px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.side-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #d1cdcd;
+  transition: color 0.4s ease-in-out;
+}
+
+.side-link>i {
+  padding-top: 5px;
+}
+
+.side-link:hover {
+  color: #262a2e;
+}

@@ -1,0 +1,138 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Mulish', serif;
+  font-optical-sizing: auto;
+  background-color: #e9e3e3;
+}
+
+.notFound {
+  margin: 100px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #854847;
+  font-size: 1.5rem;
+}
+
+.notFound a {
+  color: inherit;
+}
+
+.signup-container,
+.login-container {
+  max-width: 400px;
+  margin: 0 auto;
+  margin-top: 50px;
+  padding: 20px;
+  background-color: #c29292;
+  color: #e9e3e3;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.signup-heading,
+.login-heading {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.signup-form,
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  font-size: 16px;
+}
+
+input:focus {
+  border-color: #e6cc79;
+  outline: none;
+}
+
+.error {
+  color: rgb(104, 18, 18);
+  font-size: 12px;
+}
+
+.signup-button,
+.login-button {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #6e6c6c;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Mulish', serif;
+  color: #e9e3e3;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+}
+
+.signup-button:hover,
+.login-button:hover {
+  background-color: #4a4a4a;
+  scale: 1.01;
+}
+
+.search-input {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.search-input__label {
+  margin-right: 0.5rem;
+  font-weight: bold;
+}
+
+.search-input__field {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex: 1;
+  transition: border-color 0.3s;
+}
+
+.search-input__field:focus {
+  border-color: #e6cc79;
+  outline: none;
+}
+
+.sort-controls {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.sort-controls select {
+  color: #854847;
+  font-family: 'Mulish', serif;
+  border: 1px solid #854847;
+  border-radius: 3px;
+  outline: none;
+}

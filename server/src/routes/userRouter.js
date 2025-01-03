@@ -7,6 +7,11 @@ const userRouter = Router();
 userRouter.route('/').get(userController.getUsers);
 
 userRouter
+  .route('/subscriptions')
+  .get(verifyAccessToken, userController.getUserSubscriptions);
+
+userRouter.route('/followers').get(verifyAccessToken, userController.getUserFollowers);
+userRouter
   .route('/:userId')
   .get(verifyAccessToken, userController.getOneUser)
   .patch(verifyAccessToken, userController.updateUserInfo)

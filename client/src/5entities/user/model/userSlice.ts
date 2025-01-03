@@ -7,8 +7,8 @@ import {
   getUserByIdThunk,
   editAccountValuesThunk,
   uploadPhotoThunk,
-  subscribeToUserThunk,
-  unsubscribeFromUserThunk,
+  getUserSubscriptionsThunk,
+  getUserFollowersThunk,
   deleteUserThunk,
 } from './userThunks';
 
@@ -16,7 +16,8 @@ type UserState = {
   users: UserType[];
   selectedUser: UserType | null;
   foundUsers: UserType[];
-  subscriptions: number[];
+  userSubscriptions: UserType[];
+  followers: UserType[];
   sortOption: string;
 };
 
@@ -24,7 +25,8 @@ const initialState: UserState = {
   users: [],
   selectedUser: null,
   foundUsers: [],
-  subscriptions: [],
+  userSubscriptions: [],
+  followers: [],
   sortOption: '0',
 };
 
@@ -59,11 +61,12 @@ export const userSlice = createSlice({
       .addCase(fetchUsersThunk.fulfilled, (state, action) => {
         state.foundUsers = action.payload;
       })
-      .addCase(subscribeToUserThunk.fulfilled, (state, action) => {
-        state.subscriptions.push(action.payload)
+
+      .addCase(getUserSubscriptionsThunk.fulfilled, (state, action) => {
+        state.userSubscriptions = action.payload;
       })
-      .addCase(unsubscribeFromUserThunk.fulfilled, (state, action) => {
-        state.subscriptions = state.subscriptions.filter((id) => id!== action.payload);
+      .addCase(getUserFollowersThunk.fulfilled, (state, action) => {
+        state.followers = action.payload;
       })
       .addCase(deleteUserThunk.fulfilled, (state) => {
         state.selectedUser = null;

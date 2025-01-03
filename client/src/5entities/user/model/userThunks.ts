@@ -59,10 +59,18 @@ export const subscribeToUserThunk = createAsyncThunk(
   },
 );
 
-
 export const unsubscribeFromUserThunk = createAsyncThunk(
   'users/unsubscribeFromUserThunk',
   async (id: UserType['id']) => {
     await userService.unsubscribeFromUser(id);
     return id;
-  });
+  },
+);
+
+export const getUserSubscriptionsThunk = createAsyncThunk('users/getUserSubscriptionsThunk', () =>
+  userService.getUserSubscriptions(),
+);
+
+export const getUserFollowersThunk = createAsyncThunk('users/getUserFollowersThunk', () =>
+  userService.getUserFollowers(),
+);

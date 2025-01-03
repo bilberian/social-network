@@ -2,6 +2,7 @@ import React from 'react';
 import { AuthStatus } from '../../4features/auth/model/types';
 import type { UserType } from '../../5entities/user/model/types';
 import {
+  getUserSubscriptionsThunk,
   subscribeToUserThunk,
   unsubscribeFromUserThunk,
 } from '../../5entities/user/model/userThunks';
@@ -15,16 +16,15 @@ type PersonCardProps = {
 export default function PersonCard({ person }: PersonCardProps): React.JSX.Element {
   const dispatch = useAppDispatch();
   const data = useAppSelector((store) => store.auth.data);
+  const mySubscriptions = useAppSelector((store) => store.user.userSubscriptions);
+  const mySubsIds = mySubscriptions.map((subscription) => subscription.id);
 
-  const amSubscribed = useAppSelector((store) =>
-    store.user.subscriptions.some((id) => id === person.id),
-  );
-  // работает до перезагрузки страницы
+  const amSubscribed = mySubsIds.some((id) => id === person.id);
 
   const handleSubscribe = async (): Promise<void> => {
     try {
       await dispatch(subscribeToUserThunk(person.id));
-      // console.log(`Вы подписались на пользователя ${person.name}`);
+      await dispatch(getUserSubscriptionsThunk());
     } catch (error) {
       console.error('Ошибка подписки:', error);
     }
@@ -33,7 +33,7 @@ export default function PersonCard({ person }: PersonCardProps): React.JSX.Eleme
   const handleUnsubscribe = async (): Promise<void> => {
     try {
       await dispatch(unsubscribeFromUserThunk(person.id));
-      // console.log(`Вы отписались от пользователя ${person.name}`);
+      await dispatch(getUserSubscriptionsThunk());
     } catch (error) {
       console.error('Ошибка отписки:', error);
     }

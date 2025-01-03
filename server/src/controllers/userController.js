@@ -131,6 +131,46 @@ class UserController {
       res.status(500).json({ text: 'Ошибка отписки', message: error.message });
     }
   };
+
+  getUserSubscriptions = async (req, res) => {
+    try {
+      const userId = res.locals.user.id;
+      const userSubscriptions = await User.findByPk(userId, {
+        include: [
+          {
+            model: User,
+            as: 'Following',
+          },
+        ],
+      });
+
+      res.json(userSubscriptions.Following);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ text: 'Ошибка получения подписок', message: error.message });
+    }
+  };
+
+  getUserFollowers = async (req, res) => {
+    try {
+      const userId = res.locals.user.id;
+      const userWithSubscribers = await User.findByPk(userId, {
+        include: [
+          {
+            model: User,
+            as: 'Subscribers',
+          },
+        ],
+      });
+
+      res.json(userWithSubscribers.Subscribers);
+    } catch (error) {
+      console.log(error);
+      res
+        .status(500)
+        .json({ text: 'Ошибка получения подписчиков', message: error.message });
+    }
+  };
 }
 
 const userController = new UserController();

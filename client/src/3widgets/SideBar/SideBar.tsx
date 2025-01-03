@@ -35,19 +35,19 @@ export default function Sidebar(): React.JSX.Element {
               <i className="fi fi-tr-folder-minus"></i>
               <span>Мой аккаунт</span>
             </RouterLink>
-            <RouterLink to="/game" className="side-link">
+            <RouterLink to="/subscriptions" className="side-link">
               <i className="fi fi-tr-people-poll"></i>
               Мои подписки
             </RouterLink>
-            <RouterLink to="/game" className="side-link">
+            <RouterLink to="/subscribers" className="side-link">
               <i className="fi fi-tr-subscription"></i>
               Подписчики
             </RouterLink>
-            <RouterLink to="/game" className="side-link">
+            <RouterLink to="/photos" className="side-link">
               <i className="fi fi-tr-camera"></i>
               Фотографии
             </RouterLink>
-            <RouterLink to="/game" className="side-link">
+            <RouterLink to="/messages" className="side-link">
               <i className="fi fi-tr-circle-envelope"></i>
               Сообщения
             </RouterLink>

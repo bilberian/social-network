@@ -3,17 +3,17 @@
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
-    static associate() {
+    static associate({ Subscription }) {
       // Подписчики
       this.belongsToMany(User, {
-        through: 'Subscriptions',
+        through: Subscription,
         as: 'Subscribers',
         foreignKey: 'subscribedToId',
       });
 
       // Подписки
       this.belongsToMany(User, {
-        through: 'Subscriptions',
+        through: Subscription,
         as: 'Following',
         foreignKey: 'subscriberId',
       });

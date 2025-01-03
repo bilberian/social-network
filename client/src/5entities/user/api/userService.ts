@@ -125,6 +125,38 @@ class UserService {
       throw error;
     }
   }
+
+  async getUserSubscriptions(): Promise<UserType[]> {
+    try {
+      const response = await this.client.get(`/users/subscriptions`);
+      if (response.status !== 200) throw new Error('Неверный статус, ожидалось 200');
+      const data = userSchema.array().parse(response.data);
+      return data;
+    } catch (error) {
+      if (error instanceof ZodError) {
+        console.log('Zod error:', error.issues);
+      } else if (error instanceof AxiosError) {
+        console.log('Axios error:', error.response?.data);
+      }
+      throw error;
+    }
+  }
+
+  async getUserFollowers(): Promise<UserType[]> {
+    try {
+      const response = await this.client.get(`/users/followers`);
+      if (response.status !== 200) throw new Error('Неверный статус, ожидалось 200');
+      const data = userSchema.array().parse(response.data);
+      return data;
+    } catch (error) {
+      if (error instanceof ZodError) {
+        console.log('Zod error:', error.issues);
+      } else if (error instanceof AxiosError) {
+        console.log('Axios error:', error.response?.data);
+      }
+      throw error;
+    }
+  }
 }
 
 const userService = new UserService(axiosInstance);

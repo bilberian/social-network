@@ -1,0 +1,14 @@
+.subscription {
+  margin-top: 50px;
+  text-align: center;
+  color: #854847;
+}
+
+.subscription__list {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 30px;
+  }
+  

@@ -50,7 +50,7 @@ class PhotoController {
       const filename = req.file ? req.file.filename : null;
       const newPhoto = await Photo.create({
         desc,
-        img: filename,
+        pic: filename,
         ownerId: res.locals.user.id,
       });
       res.status(201).json(newPhoto);

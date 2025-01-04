@@ -73,7 +73,7 @@ export default function AccountEditForm({
             render={({ field }) => <input {...field} placeholder="Добавьте имя" />}
           />
         </div>
-          {errors.name && <p className="error">{errors.name.message}</p>}
+        {errors.name && <p className="error">{errors.name.message}</p>}
         <div className="account-page__value-edit">
           <label htmlFor="nickname">Ник:</label>
           <Controller
@@ -99,7 +99,7 @@ export default function AccountEditForm({
             )}
           />
         </div>
-          {errors.email && <p className="error">{errors.email.message}</p>}
+        {errors.email && <p className="error">{errors.email.message}</p>}
         <div className="account-page__value-edit">
           <label htmlFor="city">Город:</label>
           <Controller

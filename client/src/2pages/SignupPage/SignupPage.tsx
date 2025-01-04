@@ -2,14 +2,8 @@ import React, { useTransition } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import BeatLoader from 'react-spinners/BeatLoader';
 import { signupThunk } from '../../4features/auth/model/authThunks';
+import type { UserSignupForm } from '../../5entities/user/model/types';
 import { useAppDispatch } from '../../6shared/lib/hooks';
-
-type SignupFormValues = {
-  name: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-};
 
 export default function SignupPage(): React.JSX.Element {
   const dispatch = useAppDispatch();
@@ -18,15 +12,11 @@ export default function SignupPage(): React.JSX.Element {
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm<SignupFormValues>();
+  } = useForm<UserSignupForm>();
 
-  const onSubmit = (data: SignupFormValues): void => {
-    const formData = new FormData();
-    Object.keys(data).forEach((key) => {
-      formData.append(key, data[key as keyof SignupFormValues]);
-    });
+  const onSubmit = (data: UserSignupForm): void => {
     startTransition(async () => {
-      await dispatch(signupThunk(formData));
+      await dispatch(signupThunk(data));
     });
   };
 

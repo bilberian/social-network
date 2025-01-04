@@ -43,7 +43,7 @@ export default function Sidebar(): React.JSX.Element {
               <i className="fi fi-tr-subscription"></i>
               Подписчики
             </RouterLink>
-            <RouterLink to="/photos" className="side-link">
+            <RouterLink to={`/photos/${String(data.user.id)}`} className="side-link">
               <i className="fi fi-tr-camera"></i>
               Фотографии
             </RouterLink>

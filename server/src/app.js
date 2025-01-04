@@ -5,6 +5,7 @@ const authRouter = require('./routes/authRouter');
 const tokenRouter = require('./routes/tokenRouter');
 const userRouter = require('./routes/userRouter');
 const searchRouter = require('./routes/searchRouter');
+const photoRouter = require('./routes/photoRouter');
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use('/api/auth', authRouter);
 app.use('/api/tokens', tokenRouter);
 app.use('/api/users', userRouter);
-app.use('/api/search', searchRouter)
+app.use('/api/search', searchRouter);
+app.use('/api/photos', photoRouter);
 
 module.exports = app;

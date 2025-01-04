@@ -4,14 +4,15 @@ import { ZodError } from 'zod';
 import type { BackendAuthType } from '../model/types';
 import { backendAuthSchema } from '../model/schema';
 import { userCreateSchema, userLoginSchema } from '../../../5entities/user/model/schema';
+import type { UserSignupForm } from '../../../5entities/user/model/types';
 import axiosInstance from '../../../6shared/api/axiosInstance';
 
 class AuthService {
   constructor(private readonly client: AxiosInstance) {}
 
-  async signup(formData: FormData): Promise<BackendAuthType> {
+  async signup(formData: UserSignupForm): Promise<BackendAuthType> {
     try {
-      const data = userCreateSchema.parse(Object.fromEntries(formData));
+      const data = userCreateSchema.parse(formData);
       const response = await this.client.post('/auth/signup', data, {
         headers: {
           'Content-Type': 'application/json',

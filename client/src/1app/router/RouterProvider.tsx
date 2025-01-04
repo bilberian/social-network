@@ -22,7 +22,7 @@ export default function RouterProvider(): React.JSX.Element {
 
   useEffect(() => {
     dispatch(refreshThunk()).catch(console.log);
-    dispatch(getUserSubscriptionsThunk()).catch(console.log); // иначе глючит mainPage при входе 
+    dispatch(getUserSubscriptionsThunk()).catch(console.log); // иначе глючит mainPage при входе
   }, []);
 
   return (
@@ -52,7 +52,7 @@ export default function RouterProvider(): React.JSX.Element {
           }
         />
         <Route
-          path="/photos"
+          path="/photos/:ownerId"
           element={
             <ProtectedRoute
               isAllowed={status === AuthStatus.authenticated}

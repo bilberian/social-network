@@ -13,8 +13,9 @@ export const userSchema = z.object({
 // для форм
 export const userCreateSchema = z.object({
   name: z.string(),
-  email: z.string().email(),
+  email: z.string(),
   password: z.string(),
+  confirmPassword: z.string(),
 });
 
 // либо так
@@ -24,4 +25,4 @@ export const userCreateSchema = z.object({
 //     password: z.string(),
 //   });
 
-export const userLoginSchema = userCreateSchema.omit({ name: true });
+export const userLoginSchema = userCreateSchema.omit({ name: true, confirmPassword: true });

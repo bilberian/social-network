@@ -14,7 +14,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@flaticon/flaticon-uicons": "^3.3.1",
+    "@flaticon/flaticon-uicons": "^3.3.1", 
     "@reduxjs/toolkit": "^2.5.0",
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.2",

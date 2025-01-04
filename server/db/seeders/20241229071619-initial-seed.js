@@ -1,6 +1,6 @@
 'use strict';
 
-const { User, Subscription } = require('../models');
+const { User, Subscription, Photo } = require('../models');
 const { hashSync } = require('bcrypt');
 
 /** @type {import('sequelize-cli').Migration} */
@@ -43,10 +43,25 @@ module.exports = {
         subscribedToId: 2,
       },
     ]);
+
+    await Photo.bulkCreate([
+      {
+        ownerId: 1,
+        pic: '001.jpg',
+        desc: 'nature',
+      },
+
+      {
+        ownerId: 1,
+        pic: '010.jpg',
+        desc: 'nature again',
+      },
+    ]);
   },
 
   async down(queryInterface, Sequelize) {
     await queryInterface.bulkDelete('Users', null, {});
     await queryInterface.bulkDelete('Subscriptions', null, {});
+    await queryInterface.bulkDelete('Photos', null, {});
   },
 };

@@ -78,14 +78,10 @@ export default function AccountPage(): React.JSX.Element {
               {errorMessage && <p className="error">{errorMessage}</p>}
 
               <div className="account_page__input">
-                Заменить изображение
-                <br />
-                <input
-                  className="account_page__input"
-                  type="file"
-                  accept="image/*"
-                  onChange={handleFileChange}
-                />
+                <input id="addPicInput" type="file" style={{ display: 'none' }} accept="image/*" onChange={handleFileChange} />
+                <label htmlFor="addPicInput" className="account_page__file-label">
+                  Выбери картинку
+                </label>
               </div>
             </>
           )}

@@ -1,0 +1,94 @@
+.photo-card {
+  width: 300px;
+  height: 300px;
+  border-radius: 5px;
+  background-color: #f1eaea;
+  -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.photo-card img {
+  padding: 5px;
+  min-width: 300px;
+  max-height: 200px;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+}
+
+.photo-card__text {
+  align-self: start;
+  padding-left: 5px;
+  padding-right: 70px;
+  overflow: hidden;
+}
+
+.photo-card__buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 5px;
+  width: 100%;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+
+.photo-card__button-edit,
+.photo-card__button-delete {
+  width: 27px;
+  height: 27px;
+  cursor: pointer;
+  position: relative;
+}
+
+.photo-card__button-edit_icon,
+.photo-card__button-edit_icon-hover,
+.photo-card__button-delete_icon,
+.photo-card__button-delete_icon-hover {
+  transition: opacity 0.5s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 1;
+}
+
+.photo-card__button-edit_icon-hover,
+.photo-card__button-delete_icon-hover {
+  opacity: 0;
+}
+
+.photo-card__button-edit:hover .photo-card__button-edit_icon,
+.photo-card__button-delete:hover .photo-card__button-delete_icon {
+  opacity: 0;
+}
+
+.photo-card__button-edit:hover .photo-card__button-edit_icon-hover,
+.photo-card__button-delete:hover .photo-card__button-delete_icon-hover {
+  opacity: 1;
+}
+
+.photo-card__card__editform_button-container {
+  margin: 3px 1px 0px 1px;
+  display: flex;
+  justify-content: space-between;
+}
+.photo-card__editform-button {
+  cursor: pointer;
+  border: 1px solid #854847;
+  border-radius: 2px;
+  color: #854847;
+  font-family: 'Mulish', serif;
+  padding: 0px 3px 0px 3px;
+  transition: all 0.3s ease-in-out;
+}
+
+.photo-card__editform-button:hover {
+  background-color: #854847;
+  color: #f1eaea;
+}

@@ -19,7 +19,10 @@ class PhotoController {
   getUserPhotos = async (req, res) => {
     try {
       const { ownerId } = req.params;
-      const photos = await Photo.findAll({ where: { ownerId } });
+      const photos = await Photo.findAll({
+        where: { ownerId },
+        order: [[ 'id', 'DESC' ]] 
+    });
       res.json(photos);
     } catch (error) {
       console.log(error);
@@ -81,9 +84,7 @@ class PhotoController {
       const photo = await Photo.findByPk(req.params.photoId);
       await removeImage(photo.pic);
       await photo.destroy();
-      setTimeout(() => {
-        res.sendStatus(204);
-      }, 1500);
+      res.sendStatus(204);
     } catch (error) {
       console.log(error);
       res

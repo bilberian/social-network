@@ -61,6 +61,10 @@
   cursor: pointer;
 }
 
+.account_page__file-label {
+  cursor: pointer; 
+}
+
 .account_page__values-container {
   display: flex;
   flex-direction: column;
